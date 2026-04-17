@@ -1,0 +1,17 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.csv
+*.gv
+*.ipynb_checkpoints/
+*.egg-info/
+.DS_Store
+.env
+.vscode/

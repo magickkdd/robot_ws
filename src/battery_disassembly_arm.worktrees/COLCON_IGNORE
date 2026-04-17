@@ -1,0 +1,1 @@
+# Ignore Copilot worktree snapshots to avoid duplicate package names during colcon discovery.

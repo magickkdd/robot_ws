@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="workcell">
+    <!-- 定义规划组：ur_arm -->
+    <group name="ur_arm">
+        <chain base_link="base_link" tip_link="tool_tip" />
+    </group>
+
+    <!-- 设置初始姿态（你可以添加更多） -->
+    <group_state name="home" group="ur_arm">
+        <joint name="shoulder_pan_joint" value="0" />
+        <joint name="shoulder_lift_joint" value="0" />
+        <joint name="elbow_joint" value="0" />
+        <joint name="wrist_1_joint" value="0" />
+        <joint name="wrist_2_joint" value="0" />
+        <joint name="wrist_3_joint" value="0" />
+    </group_state>
+
+    <!-- ========== 相邻连杆碰撞禁用 ========== -->
+    <disable_collisions link1="base_link_inertia" link2="shoulder_link" reason="Adjacent" />
+    <disable_collisions link1="shoulder_link" link2="upper_arm_link" reason="Adjacent" />
+    <disable_collisions link1="upper_arm_link" link2="forearm_link" reason="Adjacent" />
+    <disable_collisions link1="forearm_link" link2="wrist_1_link" reason="Adjacent" />
+    <disable_collisions link1="wrist_1_link" link2="wrist_2_link" reason="Adjacent" />
+    <disable_collisions link1="wrist_2_link" link2="wrist_3_link" reason="Adjacent" />
+    <disable_collisions link1="wrist_3_link" link2="flange" reason="Adjacent" />
+    <disable_collisions link1="flange" link2="tool0" reason="Adjacent" />
+    <disable_collisions link1="tool0" link2="end_effector_tool" reason="Adjacent" />
+    <disable_collisions link1="end_effector_tool" link2="tool_tip" reason="Adjacent" />
+
+    <!-- ========== 机械臂基座与桌子 ========== -->
+    <disable_collisions link1="base_link" link2="table_link" reason="Adjacent" />
+    <disable_collisions link1="base_link_inertia" link2="table_link" reason="Adjacent" />
+
+    <!-- ========== 固定物体之间 (永远不会碰撞) ========== -->
+    <disable_collisions link1="battery_link" link2="table_link" reason="Never" />
+    <disable_collisions link1="bolts_link" link2="table_link" reason="Never" />
+    <disable_collisions link1="flange_link" link2="table_link" reason="Never" />
+    <disable_collisions link1="battery_link" link2="bolts_link" reason="Never" />
+    <disable_collisions link1="battery_link" link2="flange_link" reason="Never" />
+    <disable_collisions link1="bolts_link" link2="flange_link" reason="Never" />
+
+    <!-- ========== 工具与电池/螺栓 (拆卸操作需要接触) ========== -->
+    <disable_collisions link1="end_effector_tool" link2="battery_link" reason="User" />
+    <disable_collisions link1="end_effector_tool" link2="bolts_link" reason="User" />
+    <disable_collisions link1="end_effector_tool" link2="flange_link" reason="User" />
+    <disable_collisions link1="tool_tip" link2="battery_link" reason="User" />
+    <disable_collisions link1="tool_tip" link2="bolts_link" reason="User" />
+    <disable_collisions link1="tool_tip" link2="flange_link" reason="User" />
+    <disable_collisions link1="tool0" link2="battery_link" reason="User" />
+    <disable_collisions link1="tool0" link2="bolts_link" reason="User" />
+    <disable_collisions link1="flange" link2="battery_link" reason="User" />
+    <disable_collisions link1="flange" link2="bolts_link" reason="User" />
+    <disable_collisions link1="wrist_3_link" link2="battery_link" reason="User" />
+    <disable_collisions link1="wrist_3_link" link2="bolts_link" reason="User" />
+
+    <!-- ========== 机械臂臂部与电池区域 (工作区域内允许靠近) ========== -->
+    <disable_collisions link1="forearm_link" link2="battery_link" reason="User" />
+    <disable_collisions link1="forearm_link" link2="bolts_link" reason="User" />
+    <disable_collisions link1="forearm_link" link2="flange_link" reason="User" />
+    <disable_collisions link1="upper_arm_link" link2="battery_link" reason="User" />
+    <disable_collisions link1="upper_arm_link" link2="bolts_link" reason="User" />
+    <disable_collisions link1="upper_arm_link" link2="flange_link" reason="User" />
+    <disable_collisions link1="wrist_1_link" link2="battery_link" reason="User" />
+    <disable_collisions link1="wrist_1_link" link2="bolts_link" reason="User" />
+    <disable_collisions link1="wrist_1_link" link2="flange_link" reason="User" />
+    <disable_collisions link1="wrist_2_link" link2="battery_link" reason="User" />
+    <disable_collisions link1="wrist_2_link" link2="bolts_link" reason="User" />
+    <disable_collisions link1="wrist_2_link" link2="flange_link" reason="User" />
+
+    <!-- ========== 机械臂不会发生自碰撞的连杆对 ========== -->
+    <disable_collisions link1="base_link" link2="upper_arm_link" reason="Never" />
+    <disable_collisions link1="base_link_inertia" link2="upper_arm_link" reason="Never" />
+    <disable_collisions link1="shoulder_link" link2="forearm_link" reason="Never" />
+    <disable_collisions link1="forearm_link" link2="wrist_2_link" reason="Never" />
+    <disable_collisions link1="forearm_link" link2="wrist_3_link" reason="Never" />
+    <disable_collisions link1="forearm_link" link2="flange" reason="Never" />
+    <disable_collisions link1="forearm_link" link2="tool0" reason="Never" />
+    <disable_collisions link1="forearm_link" link2="end_effector_tool" reason="Never" />
+    <disable_collisions link1="upper_arm_link" link2="wrist_1_link" reason="Never" />
+    <disable_collisions link1="upper_arm_link" link2="wrist_2_link" reason="Never" />
+    <disable_collisions link1="shoulder_link" link2="wrist_1_link" reason="Never" />
+</robot>
