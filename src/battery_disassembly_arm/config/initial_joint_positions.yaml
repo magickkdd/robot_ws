@@ -1,0 +1,8 @@
+# UR10e 机械臂初始关节位置（与 RViz 显示一致）
+# 这个姿态使机械臂呈现弯曲状态，末端朝前
+shoulder_pan_joint: 0.0
+shoulder_lift_joint: -1.57
+elbow_joint: 0.0
+wrist_1_joint: -1.57
+wrist_2_joint: 0.0
+wrist_3_joint: 0.0

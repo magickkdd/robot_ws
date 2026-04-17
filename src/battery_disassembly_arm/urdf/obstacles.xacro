@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- 障碍物：单个圆柱，放在路径侧面形成瓶颈 -->
+    <link name="obstacle_cylinder_1">
+        <visual>
+            <geometry>
+                <cylinder radius="0.08" length="0.5"/>
+            </geometry>
+            <material name="obstacle_red">
+                <color rgba="0.9 0.2 0.2 1.0"/>
+            </material>
+            <origin xyz="0 0 0.25" rpy="0 0 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.08" length="0.5"/>
+            </geometry>
+            <origin xyz="0 0 0.25" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+    </link>
+
+</robot>

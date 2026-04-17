@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>battery_disassembly_arm</name>
+  <version>0.0.0</version>
+  <description>Battery disassembly workcell with UR10e and custom IK solver.</description>
+  <maintainer email="czx@todo.todo">czx</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- 1. 编译工具 -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- This package is kept as a resource-only package for models and configs. -->
+  <!-- Keep only minimal buildtool and metadata; remove code and interface generation deps. -->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
